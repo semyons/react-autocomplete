@@ -197,6 +197,11 @@ var Autocomplete = function (_React$Component) {
       this.setState({ highlightedIndex: index });
     }
   }, {
+    key: 'unHighlightItemFromMouse',
+    value: function unHighlightItemFromMouse() {
+      this.setState({ highlightedIndex: null });
+    }
+  }, {
     key: 'selectItemFromMouse',
     value: function selectItemFromMouse(item) {
       var _this3 = this;
@@ -230,6 +235,9 @@ var Autocomplete = function (_React$Component) {
           } : null,
           onClick: _this4.props.isItemSelectable(item) ? function () {
             return _this4.selectItemFromMouse(item);
+          } : null,
+          onMouseLeave: _this4.props.isItemSelectable(item) ? function () {
+            return _this4.unHighlightItemFromMouse();
           } : null,
           ref: function ref(e) {
             return _this4.refs['item-' + index] = e;
